@@ -30,5 +30,5 @@ jobs:
         uses: codecov/codecov-action@v4
         # 공개 저장소는 보통 토큰이 필요 없지만, 문제가 생기면 Codecov에서 발급받아
         # GitHub 저장소의 Secrets에 CODECOV_TOKEN으로 등록해야 합니다.
-        # with:
-        #   token: ${{ secrets.CODECOV_TOKEN }}
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
