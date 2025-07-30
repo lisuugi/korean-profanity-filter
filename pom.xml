@@ -4,6 +4,14 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <groupId>io.github.lisuugi</groupId>
+    <artifactId>korean-profanity-filter</artifactId>
+    <version>0.1.0-alpha.1</version>
+
+    <name>korean-profanity-filter</name>
+    <description>Rapid Korean profanity filter</description>
+    <url>https://github.com/lisuugi/korean-profanity-filter/tree/master</url>
+
     <licenses>
         <license>
             <name>Apache-2.0</name>
@@ -18,9 +26,11 @@
         </developer>
     </developers>
 
-    <groupId>io.github.lisuugi</groupId>
-    <artifactId>korean-profanity-filter</artifactId>
-    <version>0.1.0-alpha.1</version>
+    <scm>
+        <connection>scm:git:git://github.com/lisuugi/korean-profanity-filter.git</connection>
+        <developerConnection>scm:git:ssh://github.com:lisuugi/korean-profanity-filter.git</developerConnection>
+        <url>https://github.com/lisuugi/korean-profanity-filter/tree/master</url>
+    </scm>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
@@ -70,6 +80,18 @@
                     </execution>
                 </executions>
             </plugin>
+
+            <plugin>
+                <groupId>org.sonatype.central</groupId>
+                <artifactId>central-publishing-maven-plugin</artifactId>
+                <version>0.8.0</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <publishingServerId>central</publishingServerId>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
+
+
 </project>
