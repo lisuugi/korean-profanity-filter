@@ -3,7 +3,7 @@ package io.github.lisuugi.domain.types;
 public enum DictionaryFilePath {
 
     EXTERNAL_BLACKLIST("profanityBlacklist.txt"),
-    EXTERNAL_WHITELIST("profanityBlacklist.txt"),
+    EXTERNAL_WHITELIST("profanityWhitelist.txt"),
 
     HARMFUL_LEVEL_1("dictionary/harmful/harmful.level-1.exact.txt"),
     HARMFUL_LEVEL_2("dictionary/harmful/harmful.level-2.common.txt"),
