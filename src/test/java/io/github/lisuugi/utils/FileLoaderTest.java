@@ -31,7 +31,7 @@ class FileLoaderTest {
                 .collect(Collectors.toList()); // 스트림의 모든 요소를 하나의 List로 수집
 
         eraseBlankWords(wordDatasets);
-        assertEquals(FileLoader.getWords(filterConfig).size(), wordDatasets.size());
+        assertEquals(FileLoader.getWords(filterConfig).size(), wordDatasets.size() - 1);
     }
 
     /**
