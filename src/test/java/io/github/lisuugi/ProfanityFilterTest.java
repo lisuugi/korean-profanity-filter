@@ -55,18 +55,18 @@ public class ProfanityFilterTest {
 //                        )
 //        );
     }
-//
-//    @Test
-//    public void testCustomFilter() {
-//        ProfanityFilter customFilter = ProfanityFilter.builder()
-//                .useRegexFilter(true)
-//                .setLevel(WordLevel.COMMON)
-////                .setMaskingType(MaskingType.MASK_ALL_CHARS)
-//                .addAllTypes()
-//                .build();
-//
-//
-//    }
+
+    @Test
+    public void testCustomFilter() {
+        ProfanityFilter customFilter = ProfanityFilter.builder()
+                .useRegexFilter(true)
+                .setLevel(WordLevel.COMMON)
+//                .setMaskingType(MaskingType.MASK_ALL_CHARS)
+                .addAllTypes()
+                .build();
+
+        assertTrue(customFilter.containsWords(TEST_STRING));
+    }
 //
 //    @Test
 //    @DisplayName("욕설 문장 탐지율(Recall) 측정")
