@@ -147,11 +147,11 @@ public class ProfanityFilter {
 //        return MaskingUtil.mask(filteredText, findWords(filteredText), substituteValue, this.maskingType);
 //    }
 
-    private Collection<FoundWord> findWords(String text) {
-        Collection<FoundWord> foundWords = new ArrayList<>();
-        for (MatchingStrategy strategy : strategies) {
-            foundWords.addAll(strategy.findWords(text));
-        }
-        return foundWords;
-    }
+//    private Collection<FoundWord> findWords(String text) {
+//        Collection<FoundWord> foundWords = new ArrayList<>();
+//        for (MatchingStrategy strategy : strategies) {
+//            foundWords.addAll(strategy.findWords(text));
+//        }
+//        return foundWords;
+//    }
 }

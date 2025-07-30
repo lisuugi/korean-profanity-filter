@@ -30,31 +30,31 @@ public class RegexMatcher implements MatchingStrategy {
         return REGEX_PATTERN.matcher(text).find();
     }
 
-    /**
-     * 텍스트에서 정규식과 일치하는 모든 부분을 찾아 FoundTerm 객체 컬렉션으로 반환합니다.
-     *
-     * @param text 검사할 텍스트
-     * @return 찾은 모든 단어 정보가 담긴 Collection
-     */
-    @Override
-    public Collection<FoundWord> findWords(String text) {
-        if (text == null || text.isEmpty()) {
-            return new ArrayList<>();
-        }
-
-        List<FoundWord> foundTerms = new ArrayList<>();
-        Matcher matcher = REGEX_PATTERN.matcher(text);
-
-        // find() 메서드를 반복 호출하여 텍스트 내의 모든 일치 항목을 순회합니다.
-        while (matcher.find()) {
-            // 일치하는 부분을 찾을 때마다 FoundTerm 객체를 생성합니다.
-            foundTerms.add(new FoundWord(
-                    matcher.group(), // 일치한 실제 문자열
-                    matcher.start(), // 시작 인덱스
-                    matcher.end()    // 끝 인덱스 (exclusive)
-            ));
-        }
-
-        return foundTerms;
-    }
+//    /**
+//     * 텍스트에서 정규식과 일치하는 모든 부분을 찾아 FoundTerm 객체 컬렉션으로 반환합니다.
+//     *
+//     * @param text 검사할 텍스트
+//     * @return 찾은 모든 단어 정보가 담긴 Collection
+//     */
+//    @Override
+//    public Collection<FoundWord> findWords(String text) {
+//        if (text == null || text.isEmpty()) {
+//            return new ArrayList<>();
+//        }
+//
+//        List<FoundWord> foundTerms = new ArrayList<>();
+//        Matcher matcher = REGEX_PATTERN.matcher(text);
+//
+//        // find() 메서드를 반복 호출하여 텍스트 내의 모든 일치 항목을 순회합니다.
+//        while (matcher.find()) {
+//            // 일치하는 부분을 찾을 때마다 FoundTerm 객체를 생성합니다.
+//            foundTerms.add(new FoundWord(
+//                    matcher.group(), // 일치한 실제 문자열
+//                    matcher.start(), // 시작 인덱스
+//                    matcher.end()    // 끝 인덱스 (exclusive)
+//            ));
+//        }
+//
+//        return foundTerms;
+//    }
 }

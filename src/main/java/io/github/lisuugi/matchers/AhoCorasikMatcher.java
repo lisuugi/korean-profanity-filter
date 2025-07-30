@@ -20,11 +20,11 @@ public class AhoCorasikMatcher implements MatchingStrategy {
         return trie.containsMatch(text);
     }
 
-    @Override
-    public Collection<FoundWord> findWords(String text) {
-        Collection<Emit> emits = trie.parseText(text);
-        return emits.stream()
-                .map(emit -> new FoundWord(emit.getKeyword(), emit.getStart(), emit.getEnd() + 1))
-                .collect(Collectors.toList());
-    }
+//    @Override
+//    public Collection<FoundWord> findWords(String text) {
+//        Collection<Emit> emits = trie.parseText(text);
+//        return emits.stream()
+//                .map(emit -> new FoundWord(emit.getKeyword(), emit.getStart(), emit.getEnd() + 1))
+//                .collect(Collectors.toList());
+//    }
 }
