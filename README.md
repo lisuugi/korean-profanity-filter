@@ -7,7 +7,7 @@
 ---
 
 [![Build Status](https://github.com/lisuugi/korean-profanity-filter/actions/workflows/build.yaml/badge.svg)](https://github.com/lisuugi/korean-profanity-filter/actions)
-[![codecov](https://codecov.io/gh/lisuugi/korean-profanity-filter/branch/main/graph/badge.svg)](https://codecov.io/gh/lisuugi/korean-profanity-filter)
+[![codecov](https://codecov.io/gh/lisuugi/korean-profanity-filter/graph/badge.svg?token=h1E8Oi3Uin)](https://codecov.io/gh/lisuugi/korean-profanity-filter)
 
 ![Java](https://img.shields.io/badge/Java-8-red?logo=openjdk)
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
