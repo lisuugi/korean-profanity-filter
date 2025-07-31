@@ -1,4 +1,4 @@
-> This document is written in Korean. [**Click here to read in English.**](./README.en.md)
+[//]: # (> This document is written in Korean. [**Click here to read in English.**]&#40;./README.en.md&#41;)
 
 
 > ### 주의!
@@ -20,7 +20,7 @@
 ### 개요
 한국어 비속어 탐지 Java 라이브러리입니다.
 
-압도적으로 빠르고, 가볍고, 범용적으로 개발한 욕설 필터입니다.
+압도적으로 빠르고, 가볍고, 범용적인 용도를 목표로 개발한 욕설 필터입니다.
 
 
 ### 기능
@@ -46,12 +46,45 @@
 
 [//]: # (      - 예&#41; 이 씨발새끼야. -> 이 \[검열\]야.)
 2. 설정을 통해 화이트리스트, 블랙리스트 단어 수동 추가. (모든 필터링 레벨에 최우선 적용)
-   - whitelist.txt, blacklist.txt를 프로젝트 최상단에 만들면 자동 인식.
+   - profanityWhitelist.txt, profanityBlacklist.txt를 프로젝트 최상단에 만들면 자동 인식.
 3. 필터 수동 선택 적용
 
 ### 사용 방법
-maven, gradle import 코드
 
+[//]: # (Maven Import)
+
+[//]: # (~~~Maven)
+
+[//]: # (<dependencies>)
+
+[//]: # (    <dependency>)
+
+[//]: # (        <groupId>io.github.lisuugi</groupId>)
+
+[//]: # (        <artifactId>korean-profanity-filter</artifactId>)
+
+[//]: # (        <version>0.1.0-alpha.1</version>)
+
+[//]: # (    </dependency>)
+
+[//]: # (</dependencies>)
+
+[//]: # (~~~)
+
+[//]: # ()
+[//]: # (Gradle Import)
+
+[//]: # (~~~Gradle)
+
+[//]: # (dependencies {)
+
+[//]: # (    implementation 'io.github.lisuugi:korean-profanity-filter:0.1.0-alpha.1')
+
+[//]: # (})
+
+[//]: # (~~~)
+
+Spring Bean 등록 활용 예시
 ~~~Java
 @Configuration
 public class FilterConfiguration {
@@ -74,7 +107,7 @@ public class FilterConfiguration {
 ### 사용자 정의 단어장 사용 방법
 1. 프로젝트 최상단에 **profanityBlacklist.txt, profanityWhitelist.txt** 파일을 작성합니다.
 2. **각 줄마다 하나의 단어를 작성**합니다.
-3. 프로젝트를 실행할 때, **해당 위치에 파일이 있다면 자동으로 감지**하여 사전 목록에 추가합니다.
+3. 프로젝트를 실행할 때, **해당 위치에 파일이 있다면 자동으로 감지**하여 사전 목록에 추가, 또는 제외합니다.
 
 ### 단어장 필터링 레벨 기준
 - 레벨 1 - 사전에 등재된 정확한 단어, 또는 매우 보편적으로 쓰이는 혐오의 의도가 명확한 단어.
@@ -86,6 +119,7 @@ public class FilterConfiguration {
    - 외설적인 단어
    - 폭력적인 단어
    - 혐오감을 주는 단어
+   - 정치 비하, 지역 비하, 성별 비하 단어
 2. 단어 매칭 API (하나만 선택 가능)
    - 정규 사전 용어 (레벨 1 - 사전에 등재된 정식 단어, 매우 빠름)
    - 범용 우회 용어 (레벨 2 - 일반적인 우회 단어)
@@ -103,13 +137,15 @@ public class FilterConfiguration {
 
 ### 사용시 주의 사항
 AI를 활용하지 않기 때문에, **문맥을 고려하지 않는다**는 한계점이 존재합니다.
-1. **욕설을 사용하지 않은 공격적인 글**은 탐지하지 못합니다.
+1. **욕설을 사용하지 않는 공격적인 글**은 탐지하지 못합니다.
 2. **긍정적인 비속어 모두 필터링**됩니다.
    - 예) 존나 맛있네 -> ** 맛있네, 와 씨발 대박이다! -> 와 ** 대박이다!
 
 
 
-[//]: # (### 성능 측정)
+### 성능 측정
+
+추가 예정
 
 [//]: # (원본 데이터셋은 문맥적 공격성까지 포함하고 있으나, 본 라이브러리는 명백한 키워드 기반 탐지를 목표로 하므로, 사전에 정의된 욕설 단어가 포함된 문장만 '욕설'로 재라벨링하여 평가를 진행했습니다.)
 
