@@ -7,8 +7,6 @@ import org.junit.jupiter.api.Test;
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class RepeatCharFilterTest {
 
     private final RepeatCharFilter repeatCharFilter = new RepeatCharFilter();
@@ -20,7 +18,7 @@ class RepeatCharFilterTest {
     }
 
     @Test
-    @DisplayName("반복 문자 압축 필터 검증")
+    @DisplayName("반복 문자 압축 필터 테스트")
     void doFilter() {
         addTestCases();
         testCases.forEach((testcase, answer) ->

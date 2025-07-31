@@ -1,6 +1,7 @@
 package io.github.lisuugi.filters;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
@@ -22,6 +23,7 @@ class ConcatFilterTest {
     }
 
     @Test
+    @DisplayName("문자 자음, 모음 결합 필터 테스트")
     void doFilter() {
         addTestCases();
         testCases.forEach((testcase, answer) ->

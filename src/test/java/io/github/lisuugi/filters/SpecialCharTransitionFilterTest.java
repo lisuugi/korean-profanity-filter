@@ -1,6 +1,7 @@
 package io.github.lisuugi.filters;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
@@ -20,6 +21,7 @@ class SpecialCharTransitionFilterTest {
     }
 
     @Test
+    @DisplayName("특수문자 자모음 치환 테스트")
     void doFilter() {
         addTestCases();
         testCases.forEach((testcase, answer) ->

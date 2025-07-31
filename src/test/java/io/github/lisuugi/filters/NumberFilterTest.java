@@ -21,7 +21,7 @@ class NumberFilterTest {
     }
 
     @Test
-    @DisplayName("숫자 제거 필터 검증")
+    @DisplayName("숫자 제거 필터 테스트")
     void doFilter() {
         addTestCases();
         testCases.forEach((testcase, answer) ->

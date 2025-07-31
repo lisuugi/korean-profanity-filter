@@ -35,7 +35,7 @@ public class ProfanityFilterTest {
     private static List<String> cleanSentences;
 
     @Test
-    @DisplayName("Default 필터 욕 감지")
+    @DisplayName("기본 세팅 필터 욕 감지 테스트")
     public void testDefaultFilter() {
 //        List<String> testSentences = getTestSentences(PROFANITY_TEST_DATASET);
         ProfanityFilter defaultFilter = ProfanityFilter.createDefault();
@@ -57,6 +57,7 @@ public class ProfanityFilterTest {
     }
 
     @Test
+    @DisplayName("커스텀 필터 욕 감지 테스트")
     public void testCustomFilter() {
         ProfanityFilter customFilter = ProfanityFilter.builder()
                 .useRegexFilter(true)
