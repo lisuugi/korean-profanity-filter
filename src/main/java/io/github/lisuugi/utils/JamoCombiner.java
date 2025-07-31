@@ -65,6 +65,8 @@ public final class JamoCombiner {
 
     /**
      * 단어를 결합하는 메서드입니다.
+     * @param text 원본 문자열
+     * @return 단어 결합된 문자열
      */
     public static String combine(String text) {
         if (text == null || text.isEmpty()) {
