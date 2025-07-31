@@ -1,3 +1,3 @@
-## This is for Whitelist test
+## 화이트리스트 테스트 파일입니다. 반드시 원본 프로젝트 최상단에 profanityWhitelist.txt를 정의해야 합니다.
 
 WhiteListTest
