@@ -1,5 +1,9 @@
 package io.github.lisuugi.domain.types;
 
+
+/**
+ * 단어 사전 위치를 기록하는 Enum 클래스입니다.
+ */
 public enum DictionaryFilePath {
 
     EXTERNAL_BLACKLIST("profanityBlacklist.txt"),

@@ -3,6 +3,9 @@ package io.github.lisuugi.domain;
 import io.github.lisuugi.domain.types.WordLevel;
 import io.github.lisuugi.domain.types.WordType;
 
+/**
+ * 단어 사전 세팅 값을 저장하는 클래스입니다.
+ */
 public class Dictionary {
 
     private final WordType type;

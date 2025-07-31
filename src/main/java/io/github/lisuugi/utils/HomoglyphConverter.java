@@ -8,10 +8,7 @@ import java.util.Map;
  */
 public final class HomoglyphConverter {
 
-    // 변환 규칙을 담고 있는 정적(static) 맵
     private static final Map<Character, Character> HOMOGLYPH_MAP = new HashMap<>();
-
-    // 클래스가 로드될 때 한 번만 맵을 초기화합니다.
     static {
         // --- 자음 (Consonants) ---
         // ㄱ
@@ -66,9 +63,6 @@ public final class HomoglyphConverter {
         HOMOGLYPH_MAP.put('-', 'ㅡ'); // 하이픈
     }
 
-    /**
-     * private 생성자로 외부에서 인스턴스 생성을 방지합니다.
-     */
     private HomoglyphConverter() {}
 
     /**

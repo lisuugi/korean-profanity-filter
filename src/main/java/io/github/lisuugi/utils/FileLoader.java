@@ -19,11 +19,16 @@ import java.nio.file.Paths;
 import java.util.*;
 import java.util.stream.Collectors;
 
+/**
+ * 파일에서 데이터를 추출하는 클래스입니다.
+ */
 public final class FileLoader {
-
     private static final Logger logger = LoggerFactory.getLogger(FileLoader.class);
-    private static final List<Dictionary> dictionaries = new ArrayList<>();
 
+    /**
+     * 기본 파일 경로를 정의한 리스트 자료구조입니다.
+     */
+    private static final List<Dictionary> dictionaries = new ArrayList<>();
     static {
         dictionaries.add(new Dictionary(WordType.CUSTOM, WordLevel.CUSTOM, DictionaryFilePath.EXTERNAL_BLACKLIST.getPath()));
         dictionaries.add(new Dictionary(WordType.HARMFUL, WordLevel.EXACT, DictionaryFilePath.HARMFUL_LEVEL_1.getPath()));
@@ -41,7 +46,10 @@ public final class FileLoader {
     }
 
     /**
-     * FilterConfig에 따라 조건에 맞는 모든 단어를 로드하고, 화이트리스트 단어를 제외하여 반환합니다.
+     * FilterConfig 조건에 맞는 모든 단어를 로드하고, 화이트리스트 단어를 제외하여 반환합니다.
+     *
+     * @param config 필터링 조건 설정이 담긴 클래스
+     * @return 읽어온 단어 목록
      */
     public static List<String> getWords(FilterConfig config) {
         Set<WordType> selectedTypes = config.getWordTypes();
@@ -67,12 +75,9 @@ public final class FileLoader {
     }
 
     private static void eraseWhitelistWords(List<String> profanityWords) {
-        // 2. 외부 화이트리스트 파일을 로드합니다.
         List<String> whitelist = readFromExternalFile(DictionaryFilePath.EXTERNAL_WHITELIST.getPath());
 
-        // 3. 화이트리스트에 단어가 있다면, 욕설 목록에서 해당 단어들을 모두 제거합니다.
         if (!whitelist.isEmpty()) {
-            // 리스트에서 효율적인 제거를 위해 Set으로 변환합니다.
             Set<String> whitelistSet = new HashSet<>(whitelist);
             profanityWords.removeAll(whitelistSet);
             logger.info("Words have been excluded by profanityWhitelist.txt");
@@ -87,16 +92,14 @@ public final class FileLoader {
      */
     private static List<String> readWordsFromFile(String path) {
         if (isExternalDictionaryPath(path)) {
-            // 외부 파일(사용자 정의 파일)은 파일 시스템에서 직접 읽습니다.
             return readFromExternalFile(path);
         } else {
-            // 내부 파일(라이브러리 내장 사전)은 클래스패스 리소스로 읽습니다.
             return readFromResource(path);
         }
     }
 
     /**
-     * [신규] 클래스패스에 포함된 내부 리소스 파일을 읽습니다.
+     * 클래스패스에 포함된 내부 리소스 파일을 읽습니다. 라이브러리 내부의 단어 사전을 읽는 데에 사용됩니다.
      * 이 방식은 라이브러리가 .jar 파일로 패키징되어도 안정적으로 동작합니다.
      *
      * @param resourcePath src/main/resources/ 기준의 리소스 경로
@@ -105,7 +108,7 @@ public final class FileLoader {
     private static List<String> readFromResource(String resourcePath) {
         try (InputStream is = FileLoader.class.getClassLoader().getResourceAsStream(resourcePath)) {
             if (is == null) {
-                logger.warn("내부 사전 리소스를 찾을 수 없습니다: {}", resourcePath);
+                logger.warn("Internal Dictionary File Not Found: {}", resourcePath);
                 return Collections.emptyList();
             }
 
@@ -113,13 +116,13 @@ public final class FileLoader {
                 return reader.lines().collect(Collectors.toList());
             }
         } catch (IOException e) {
-            logger.error("내부 사전 리소스를 읽는 중 오류가 발생했습니다: {}", resourcePath, e);
+            logger.error("Internal Dictionary File Open Error: {}", resourcePath, e);
             return Collections.emptyList();
         }
     }
 
     /**
-     * [수정] 외부 파일 시스템에 있는 사용자 정의 파일을 읽습니다.
+     * 프로젝트 최상단에 있는 사용자 정의 파일을 읽습니다.
      *
      * @param path 프로젝트 루트 기준의 파일 경로
      * @return 읽어온 단어 목록

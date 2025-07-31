@@ -17,9 +17,16 @@ import org.slf4j.LoggerFactory;
 
 import java.util.*;
 
+/**
+ * 욕설 필터 메인 클래스입니다. 빌더로 초기화해서 사용할 수 있습니다.
+ */
 public class ProfanityFilter {
 
     private static final Logger logger = LoggerFactory.getLogger(ProfanityFilter.class);
+
+    /**
+     * 해당 수치 이하인 경우 아호-코라식 알고리즘 대신 완전 탐색 알고리즘이 사용됩니다.
+     */
     private static final int SIMPLE_WORD_MATCHER_SIZE_LIMIT = 470;
 
 //    private final MaskingType maskingType;
@@ -39,6 +46,10 @@ public class ProfanityFilter {
         }
     }
 
+    /**
+     * 단어 수를 기준으로, 아호-코라식, 완전 탐색 알고리즘 중에 하나를 선택하는 알고리즘입니다.
+     * @param words 필터링 단어 리스트
+     */
     private void setMainMatcher(List<String> words) {
         if (words.size() <= SIMPLE_WORD_MATCHER_SIZE_LIMIT) {
             strategies.add(new SimpleWordMatcher(words));
@@ -48,6 +59,10 @@ public class ProfanityFilter {
         }
     }
 
+    /**
+     * 필터 체이닝 메서드입니다. 새로운 필터가 추가되면 이 곳만 수정하면 됩니다.
+     * @return 가장 처음 시작하는 필터를 반환합니다.
+     */
     private static Filter initFilter() {
         Filter specialCharTransitionFilter = new SpecialCharTransitionFilter();
         Filter numberFilter = new NumberFilter();
@@ -61,6 +76,10 @@ public class ProfanityFilter {
         return numberFilter;
     }
 
+    /**
+     * 기본 세팅으로 욕설 필터를 제작하는 메서드입니다.
+     * @return 기본 세팅값의 욕설 필터가 제작됩니다.
+     */
     public static ProfanityFilter createDefault() {
         return builder().build();
     }
@@ -69,6 +88,9 @@ public class ProfanityFilter {
         return new Builder();
     }
 
+    /**
+     * 사용자 정의 욕설 필터를 제작하기 위한 빌더 클래스입니다.
+     */
     public static class Builder {
         private Set<WordType> types = EnumSet.noneOf(WordType.class);
         private WordLevel level;
@@ -128,6 +150,11 @@ public class ProfanityFilter {
         }
     }
 
+    /**
+     * 여러 욕설 매칭 전략들을 매칭하여 욕설이 포함되어 있는지 검증합니다.
+     * @param text 원본 텍스트
+     * @return 욕설이 포함되었는지 여부를 true, false로 반환합니다.
+     */
     public boolean containsWords(String text) {
         String filteredText = filterChain.doFilter(text);
         boolean foundWords = false;

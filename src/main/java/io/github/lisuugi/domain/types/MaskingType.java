@@ -1,5 +1,8 @@
 package io.github.lisuugi.domain.types;
 
+/**
+ * Masking 유형을 지정하는 Enum 클래스입니다.
+ */
 public enum MaskingType {
     /**
      * 첫 글자를 제외한 나머지를 마스킹합니다. (예: 씨*)

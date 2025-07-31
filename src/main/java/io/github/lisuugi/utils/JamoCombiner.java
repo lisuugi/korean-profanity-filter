@@ -5,7 +5,6 @@ import java.util.Map;
 
 /**
  * 분리된 한글 자모음을 완전한 글자로 조합하는 로직을 담당하는 유틸리티 클래스입니다.
- * [수정] 다양한 엣지 케이스를 처리하기 위해 상태 머신 기반의 새로운 조합 로직으로 전면 수정했습니다.
  */
 public final class JamoCombiner {
 
@@ -19,8 +18,6 @@ public final class JamoCombiner {
     private static final Map<String, Character> DOUBLE_JONGSEONG_MAP = new HashMap<>();
     private static final Map<String, Character> DOUBLE_JUNGSEONG_MAP = new HashMap<>();
 
-
-    // 클래스 로딩 시점에 맵들을 초기화합니다.
     static {
         // 초성 (Initial Consonants)
         char[] choseong = {'ㄱ', 'ㄲ', 'ㄴ', 'ㄷ', 'ㄸ', 'ㄹ', 'ㅁ', 'ㅂ', 'ㅃ', 'ㅅ', 'ㅆ', 'ㅇ', 'ㅈ', 'ㅉ', 'ㅊ', 'ㅋ', 'ㅌ', 'ㅍ', 'ㅎ'};
@@ -65,6 +62,10 @@ public final class JamoCombiner {
 
     private JamoCombiner() {}
 
+
+    /**
+     * 단어를 결합하는 메서드입니다.
+     */
     public static String combine(String text) {
         if (text == null || text.isEmpty()) {
             return text;

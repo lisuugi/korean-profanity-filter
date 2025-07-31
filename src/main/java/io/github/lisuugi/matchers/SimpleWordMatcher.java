@@ -7,8 +7,8 @@ import java.util.Collection;
 import java.util.List;
 
 /**
- * O(N*M) 시간 복잡도를 가지는 Naive-Search 알고리즘을 구현한 Matcher입니다.
- * 성능 비교 테스트 목적으로 사용됩니다.
+ * O(N*M) 시간 복잡도를 가지는 Naive-Search 알고리즘을 활용한 단어 탐색 클래스입니다.
+ * 단어량이 470개 이하일 때 속도가 빠릅니다.
  */
 public class SimpleWordMatcher implements MatchingStrategy {
 
@@ -18,10 +18,6 @@ public class SimpleWordMatcher implements MatchingStrategy {
         this.keywords = keywords;
     }
 
-    /**
-     * 텍스트에 키워드가 포함되어 있는지 확인합니다.
-     * M개의 키워드에 대해 각각 N 길이의 텍스트를 탐색합니다. (최악 O(N*M))
-     */
     @Override
     public boolean contains(String text) {
         if (text == null || text.isEmpty()) {
@@ -29,7 +25,7 @@ public class SimpleWordMatcher implements MatchingStrategy {
         }
         for (String keyword : keywords) {
             if (text.contains(keyword)) {
-                return true; // 하나라도 찾으면 즉시 반환
+                return true;
             }
         }
         return false;
