@@ -15,16 +15,19 @@ import static org.junit.jupiter.api.Assertions.*;
 class SimpleWordMatcherTest {
 
     private static final FilterConfig filterConfig = new FilterConfig(EnumSet.allOf(WordType.class), WordLevel.EXACT, null, false);
-    private final AhoCorasikMatcher ahoCorasikMatcher = new AhoCorasikMatcher(FileLoader.getWords(filterConfig));
+    private final SimpleWordMatcher simpleWordMatcher = new SimpleWordMatcher(FileLoader.getWords(filterConfig));
 
 
     @Test
     @DisplayName("완전 탐색 알고리즘 필터링 테스트")
     void contains() {
-        boolean result = ahoCorasikMatcher.contains("씨발");
+        boolean result1 = simpleWordMatcher.contains("");
+        assertFalse(result1);
+
+        boolean result = simpleWordMatcher.contains("씨발");
         assertTrue(result);
 
-        boolean result2 = ahoCorasikMatcher.contains("병신");
+        boolean result2 = simpleWordMatcher.contains("병신");
         assertTrue(result2);
     }
 

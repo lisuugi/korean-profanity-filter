@@ -13,6 +13,9 @@ class RegexMatcherTest {
     @Test
     @DisplayName("정규식 필터 알고리즘 필터링 테스트")
     void contains() {
+        boolean result1 = regexMatcher.contains("");
+        assertFalse(result1);
+
         boolean result = regexMatcher.contains("씨발");
         assertTrue(result);
 

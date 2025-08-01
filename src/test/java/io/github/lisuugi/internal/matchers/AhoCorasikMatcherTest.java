@@ -20,10 +20,13 @@ class AhoCorasikMatcherTest {
     @Test
     @DisplayName("아호-코라식 알고리즘 필터링 테스트")
     void contains() {
-        boolean result = ahoCorasikMatcher.contains("씨발");
-        assertTrue(result);
+        boolean result1 = ahoCorasikMatcher.contains("");
+        assertFalse(result1);
 
-        boolean result2 = ahoCorasikMatcher.contains("병신");
+        boolean result2 = ahoCorasikMatcher.contains("씨발");
         assertTrue(result2);
+
+        boolean result3 = ahoCorasikMatcher.contains("병신");
+        assertTrue(result3);
     }
 }
