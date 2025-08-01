@@ -1,13 +1,10 @@
 package io.github.lisuugi;
 
-import io.github.lisuugi.domain.types.MaskingType;
-import io.github.lisuugi.domain.types.WordLevel;
-import io.github.lisuugi.domain.types.WordType;
-import io.github.lisuugi.dto.FilterConfig;
-import io.github.lisuugi.matchers.AhoCorasikMatcher;
-import io.github.lisuugi.matchers.RegexMatcher;
-import io.github.lisuugi.matchers.SimpleWordMatcher;
-import io.github.lisuugi.utils.FileLoader;
+import io.github.lisuugi.internal.domain.types.MaskingType;
+import io.github.lisuugi.internal.domain.types.WordLevel;
+import io.github.lisuugi.internal.domain.types.WordType;
+import io.github.lisuugi.internal.dto.FilterConfig;
+import io.github.lisuugi.internal.utils.FileLoader;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -15,7 +12,6 @@ import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.EnumSet;
 import java.util.List;

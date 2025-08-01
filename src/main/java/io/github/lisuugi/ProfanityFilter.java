@@ -1,17 +1,15 @@
 package io.github.lisuugi;
 
-import io.github.lisuugi.domain.types.MaskingType;
-import io.github.lisuugi.domain.types.WordLevel;
-import io.github.lisuugi.domain.types.WordType;
-import io.github.lisuugi.dto.FilterConfig;
-import io.github.lisuugi.dto.FoundWord;
-import io.github.lisuugi.filters.*;
-import io.github.lisuugi.matchers.MatchingStrategy;
-import io.github.lisuugi.matchers.RegexMatcher;
-import io.github.lisuugi.matchers.SimpleWordMatcher;
-import io.github.lisuugi.utils.FileLoader;
-import io.github.lisuugi.utils.MaskingUtil;
-import io.github.lisuugi.matchers.AhoCorasikMatcher;
+import io.github.lisuugi.internal.domain.types.MaskingType;
+import io.github.lisuugi.internal.domain.types.WordLevel;
+import io.github.lisuugi.internal.domain.types.WordType;
+import io.github.lisuugi.internal.dto.FilterConfig;
+import io.github.lisuugi.internal.filters.*;
+import io.github.lisuugi.internal.matchers.MatchingStrategy;
+import io.github.lisuugi.internal.matchers.RegexMatcher;
+import io.github.lisuugi.internal.matchers.SimpleWordMatcher;
+import io.github.lisuugi.internal.utils.FileLoader;
+import io.github.lisuugi.internal.matchers.AhoCorasikMatcher;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
