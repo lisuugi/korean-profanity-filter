@@ -20,6 +20,9 @@ public class AhoCorasikMatcher implements MatchingStrategy {
 
     @Override
     public boolean contains(String text) {
+        if (text == null || text.isEmpty()) {
+            return false;
+        }
         return trie.containsMatch(text);
     }
 
