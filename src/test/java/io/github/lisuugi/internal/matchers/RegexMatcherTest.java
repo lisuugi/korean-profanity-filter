@@ -16,11 +16,14 @@ class RegexMatcherTest {
         boolean result1 = regexMatcher.contains("");
         assertFalse(result1);
 
-        boolean result = regexMatcher.contains("씨발");
-        assertTrue(result);
+        boolean result2 = regexMatcher.contains(null);
+        assertFalse(result2);
 
-        boolean result2 = regexMatcher.contains("병신");
-        assertTrue(result2);
+        boolean result3 = regexMatcher.contains("씨발");
+        assertTrue(result3);
+
+        boolean result4 = regexMatcher.contains("병신");
+        assertTrue(result4);
     }
 
     @Test

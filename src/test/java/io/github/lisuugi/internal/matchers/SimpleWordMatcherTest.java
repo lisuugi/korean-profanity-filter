@@ -24,11 +24,14 @@ class SimpleWordMatcherTest {
         boolean result1 = simpleWordMatcher.contains("");
         assertFalse(result1);
 
-        boolean result = simpleWordMatcher.contains("씨발");
-        assertTrue(result);
+        boolean result2 = simpleWordMatcher.contains(null);
+        assertFalse(result2);
 
-        boolean result2 = simpleWordMatcher.contains("병신");
-        assertTrue(result2);
+        boolean result3 = simpleWordMatcher.contains("씨발");
+        assertTrue(result3);
+
+        boolean result4 = simpleWordMatcher.contains("병신");
+        assertTrue(result4);
     }
 
     @Test

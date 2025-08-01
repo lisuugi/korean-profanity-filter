@@ -23,10 +23,13 @@ class AhoCorasikMatcherTest {
         boolean result1 = ahoCorasikMatcher.contains("");
         assertFalse(result1);
 
-        boolean result2 = ahoCorasikMatcher.contains("씨발");
-        assertTrue(result2);
+        boolean result2 = ahoCorasikMatcher.contains(null);
+        assertFalse(result2);
 
-        boolean result3 = ahoCorasikMatcher.contains("병신");
+        boolean result3 = ahoCorasikMatcher.contains("씨발");
         assertTrue(result3);
+
+        boolean result4 = ahoCorasikMatcher.contains("병신");
+        assertTrue(result4);
     }
 }
