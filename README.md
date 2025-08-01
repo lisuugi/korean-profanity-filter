@@ -51,38 +51,30 @@
 
 ### 사용 방법
 
-[//]: # (Maven Import)
+Maven Import
 
-[//]: # (~~~Maven)
+~~~Maven
 
-[//]: # (<dependencies>)
+<dependencies>
+    <dependency>
+        <groupId>io.github.lisuugi</groupId>
+        <artifactId>korean-profanity-filter</artifactId>
+        <version>0.1.0</version>
+    </dependency>
+</dependencies>
 
-[//]: # (    <dependency>)
+~~~
 
-[//]: # (        <groupId>io.github.lisuugi</groupId>)
 
-[//]: # (        <artifactId>korean-profanity-filter</artifactId>)
+Gradle Import
 
-[//]: # (        <version>0.1.0-alpha.1</version>)
+~~~Gradle
 
-[//]: # (    </dependency>)
+dependencies {
+    implementation 'io.github.lisuugi:korean-profanity-filter:0.1.0'
+}
 
-[//]: # (</dependencies>)
-
-[//]: # (~~~)
-
-[//]: # ()
-[//]: # (Gradle Import)
-
-[//]: # (~~~Gradle)
-
-[//]: # (dependencies {)
-
-[//]: # (    implementation 'io.github.lisuugi:korean-profanity-filter:0.1.0-alpha.1')
-
-[//]: # (})
-
-[//]: # (~~~)
+~~~
 
 Spring Bean 등록 활용 예시
 ~~~Java
@@ -145,7 +137,21 @@ AI를 활용하지 않기 때문에, **문맥을 고려하지 않는다**는 한
 
 ### 성능 측정
 
-추가 예정
+~~~
+Total Sentences: 2033893
+Total Keywords: 3417
+----------------------------------------
+Aho-Corasick O(N): 2304.8284ms | Throughput: 882,448.78 sentences/sec
+Regex O(N): 39753.4185ms | Throughput: 51,162.72 sentences/sec
+Naive-Search O(N*M): 88868.0712ms | Throughput: 22,886.66 sentences/sec
+Aho-Corasick + Regex: 43013.9642ms | Throughput: 47,284.48 sentences/sec
+----------------------------------------
+Aho-Corasick is 94.20% faster than Regex.
+Aho-Corasick is 97.41% faster than Naive-Search.
+~~~
+아호-코라식 알고리즘과 정규식 알고리즘은 Keyword 단어 사전 숫자가 늘어나도 항상 일정한 속도를 유지합니다.
+완전 탐색의 경우 단어 사전 숫자가 470개 이하인 경우 아호-코라식보다 빠르게 처리가 가능합니다.
+
 
 [//]: # (원본 데이터셋은 문맥적 공격성까지 포함하고 있으나, 본 라이브러리는 명백한 키워드 기반 탐지를 목표로 하므로, 사전에 정의된 욕설 단어가 포함된 문장만 '욕설'로 재라벨링하여 평가를 진행했습니다.)
 
